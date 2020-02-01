@@ -11,8 +11,8 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] private Transform playerPosition;
 
     private Vector3 shootingdir;
-    private float shootingCountdown;
-    private float shootingCountdownOffset;
+    public float shootingCountdown;
+    public float shootingCountdownOffset;
     [SerializeField]private float shootingRate;
 
     private void Start()

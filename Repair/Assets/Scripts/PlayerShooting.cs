@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerShooting : MonoBehaviour
 {
-
+    [Header("Shoot")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootingPoint;
     [SerializeField] private Transform rotationPoint;
@@ -16,6 +16,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float shootingRate = 2f;
     private float shootingCountdown;
 
+    [SerializeField][Header("Bomb")]                     
     private float bomb;
     private int bombNumber;
     [SerializeField]private float bombRadius;
@@ -24,10 +25,14 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField] private float bombRate = .25f;
     private float bombCountdown;
-
+    [SerializeField]private GameObject bombEffect;
+    private Light2D bombLight;
+    [SerializeField] private float updateLight = 20f;
+    private EnemyShooting enemyShooting;
     private void Start()
     {
         bombNumber = 3;
+        enemyShooting = FindObjectOfType<EnemyShooting>();
     }
 
     private void Update()
@@ -68,12 +73,29 @@ public class PlayerShooting : MonoBehaviour
 
     private void Bomb()
     {
-        Debug.Log("Bomb");
+        enemyShooting.enabled = false;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,bombRadius,layerMask);
+        GameObject BombEffectIns = Instantiate(bombEffect,transform.position,transform.rotation);
+        bombLight = BombEffectIns.GetComponentInChildren<Light2D>();
+        StartCoroutine(DimLight());
+        Destroy(BombEffectIns, 2f);
         foreach (var collider in hitColliders)
         {
             Destroy(collider.gameObject);
         }
+    }
+
+    IEnumerator DimLight()
+    {
+        float elapsed = 0f;
+
+        while(elapsed < updateLight) 
+        {
+            elapsed += Time.deltaTime;
+            bombLight.intensity -= Time.deltaTime;
+            yield return null;
+        }
+        enemyShooting.enabled = true;
     }
 
     private void OnDrawGizmosSelected()

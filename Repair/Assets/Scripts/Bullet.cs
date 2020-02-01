@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     {
         transform.position += dir * projectileSpeed * Time.deltaTime;
 
-        Destroy(gameObject,5f);
+        Destroy(gameObject,2f);
     }
 
     private void OnDestroy()

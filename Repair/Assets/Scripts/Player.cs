@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class Player : MonoBehaviour
     [SerializeField]private float currentHealth;
     private Bullet bullet;
 
+    [SerializeField] private Image HealthBar;
+
     private void Start()
     {
-        maxHealth = 1000f;
+        maxHealth = 100f;
         currentHealth = maxHealth;    
     }
 
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
     public void GetDamage(float damage)
     {
         currentHealth -= damage;
+        HealthBar.fillAmount = currentHealth / maxHealth;
     }
 
     void Die()

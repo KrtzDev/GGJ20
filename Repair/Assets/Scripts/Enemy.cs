@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Bullet")
+        if (collision.tag == "PlayerBullet")
         {
             bullet = collision.GetComponent<Bullet>();
             GetRepaired(bullet.damage);

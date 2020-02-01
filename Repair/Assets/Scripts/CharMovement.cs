@@ -15,6 +15,7 @@ public class CharMovement : MonoBehaviour
 
     [SerializeField] private float dashForce = 5f;
     private bool dashpossible = true;
+    [SerializeField]private LayerMask layerMask;
 
     [SerializeField] private float movementSpeed = 5f;
 
@@ -32,7 +33,7 @@ public class CharMovement : MonoBehaviour
         movementdir = new Vector3(horizontal,vertical,0);
         movement = Vector3.ClampMagnitude(movementdir, 1f);
 
-        if (Input.GetButtonDown("Dash") && dashpossible == true)
+        if (Input.GetButtonDown("Dash") && dashpossible == true && CanDash())
         {
             transform.position += movementdir.normalized * dashForce;
             charColl.enabled = false;
@@ -51,6 +52,16 @@ public class CharMovement : MonoBehaviour
     {
         charRb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
         transform.right = movementdir.normalized;
+    }
+
+    private bool CanDash()
+    {
+        return Physics2D.Raycast(transform.position, movementdir.normalized, dashForce, layerMask).collider == null; ;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position,movementdir.normalized * dashForce);
     }
 
     IEnumerator DashInvincibility()
