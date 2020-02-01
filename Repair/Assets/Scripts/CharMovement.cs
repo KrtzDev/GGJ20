@@ -6,6 +6,7 @@ public class CharMovement : MonoBehaviour
 {
 
     private Rigidbody2D charRb;
+    private BoxCollider2D charColl;
 
     private float horizontal;
     private float vertical;
@@ -20,6 +21,7 @@ public class CharMovement : MonoBehaviour
     private void Start()
     {
         charRb = GetComponent<Rigidbody2D>();
+        charColl = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -33,6 +35,8 @@ public class CharMovement : MonoBehaviour
         if (Input.GetButtonDown("Dash") && dashpossible == true)
         {
             transform.position += movementdir.normalized * dashForce;
+            charColl.enabled = false;
+            StartCoroutine(DashInvincibility());
             dashpossible = false;
             StartCoroutine(DashCooldown());
         }
@@ -47,6 +51,12 @@ public class CharMovement : MonoBehaviour
     {
         charRb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
         transform.right = movementdir.normalized;
+    }
+
+    IEnumerator DashInvincibility()
+    {
+        yield return new WaitForSeconds(.1f);
+        charColl.enabled = true;
     }
 
     IEnumerator DashCooldown()

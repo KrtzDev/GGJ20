@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBomb : MonoBehaviour
+public class ShootingPoint : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

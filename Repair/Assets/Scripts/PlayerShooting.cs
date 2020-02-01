@@ -16,6 +16,20 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float shootingRate = 2f;
     private float shootingCountdown;
 
+    private float bomb;
+    private int bombNumber;
+    [SerializeField]private float bombRadius;
+    [SerializeField]private LayerMask layerMask;
+    [SerializeField]private Collider2D[] results;
+
+    [SerializeField] private float bombRate = .25f;
+    private float bombCountdown;
+
+    private void Start()
+    {
+        bombNumber = 3;
+    }
+
     private void Update()
     {
         horizontalShoot = Input.GetAxis("HorizontalShoot");
@@ -32,6 +46,19 @@ public class PlayerShooting : MonoBehaviour
             }
         }
         shootingCountdown -= Time.deltaTime;
+
+        bomb = Input.GetAxis("Bomb");
+
+        if (bomb > .1f)
+        {
+            if (bombNumber > 0 && bombCountdown <= 0)
+            {
+                bombNumber--;
+                Bomb();
+                bombCountdown = 1f / bombRate;                     
+            }
+        }
+        bombCountdown -= Time.deltaTime;
     }
 
     private void Shoot()
@@ -39,4 +66,18 @@ public class PlayerShooting : MonoBehaviour
         Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
     }
 
+    private void Bomb()
+    {
+        Debug.Log("Bomb");
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,bombRadius,layerMask);
+        foreach (var collider in hitColliders)
+        {
+            Destroy(collider.gameObject);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, bombRadius);
+    }
 }

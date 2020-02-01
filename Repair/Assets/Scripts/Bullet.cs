@@ -8,8 +8,11 @@ public class Bullet : MonoBehaviour
 
     private Vector3 dir;
 
+    public float damage;
+
     private void Start()
     {
+        damage = 10f;
         dir = transform.right;
     }
     private void FixedUpdate()
@@ -19,5 +22,8 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject,5f);
     }
 
-
+    private void OnDestroy()
+    {
+        //INstanciate effect
+    }
 }
