@@ -23,6 +23,7 @@ ExportedObj/
 *.pidb
 *.booproj
 *.svd
+*.vs
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
