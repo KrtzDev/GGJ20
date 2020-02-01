@@ -73,7 +73,10 @@ public class PlayerShooting : MonoBehaviour
 
     private void Bomb()
     {
-        enemyShooting.enabled = false;
+        if (enemyShooting != null)
+        {
+            enemyShooting.enabled = false;
+        }
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,bombRadius,layerMask);
         GameObject BombEffectIns = Instantiate(bombEffect,transform.position,transform.rotation);
         bombLight = BombEffectIns.GetComponentInChildren<Light2D>();
@@ -95,7 +98,10 @@ public class PlayerShooting : MonoBehaviour
             bombLight.intensity -= Time.deltaTime;
             yield return null;
         }
-        enemyShooting.enabled = true;
+        if (enemyShooting != null)
+        {
+            enemyShooting.enabled = true;
+        }
     }
 
     private void OnDrawGizmosSelected()

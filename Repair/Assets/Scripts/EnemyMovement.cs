@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
             transform.right = playerPosition.position - transform.position;
 
             float dist = Vector3.Distance(playerPosition.position, transform.position);
-            if (dist > 6)
+            if (dist > 5)
             {
                 EnemyRb.MovePosition(transform.position + transform.right * speed * Time.deltaTime);
             }

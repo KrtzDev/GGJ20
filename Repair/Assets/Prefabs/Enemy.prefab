@@ -581,6 +581,8 @@ MonoBehaviour:
   shootingPointVariations: []
   rotationPoint: {fileID: 9009314375534893938}
   playerPosition: {fileID: 0}
+  shootingCountdown: 0
+  shootingCountdownOffset: 0
   shootingRate: 1
 --- !u!114 &9009314374405822216
 MonoBehaviour:

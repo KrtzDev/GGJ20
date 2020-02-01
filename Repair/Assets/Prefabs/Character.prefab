@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1197181864}
   - component: {fileID: 1197181865}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: CharLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0042988956, y: 0.0064481497}
+  m_Offset: {x: 0.03181304, y: 0.013670564}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31219333, y: 0.31649232}
+  m_Size: {x: 0.6059034, y: 0.57168317}
   m_EdgeRadius: 0
 --- !u!114 &3680435318010201987
 MonoBehaviour:
@@ -207,6 +207,7 @@ MonoBehaviour:
   shootingPoint: {fileID: 3680435318754984527}
   rotationPoint: {fileID: 3680435319686140289}
   shootingRate: 5
+  bomb: 0
   bombRadius: 4
   layerMask:
     serializedVersion: 2

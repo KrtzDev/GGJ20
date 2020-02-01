@@ -51,7 +51,10 @@ public class CharMovement : MonoBehaviour
     private void Move()
     {
         charRb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
-        transform.right = movementdir.normalized;
+        if (movementdir.sqrMagnitude != 0)
+        {
+            transform.right = movementdir.normalized;
+        }
     }
 
     private bool CanDash()
