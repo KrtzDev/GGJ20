@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     private float startHealth;
+    private float maxHealth;
     [SerializeField] private float currentHealth;
     private Bullet bullet;
+
+    [SerializeField] private Image HealthBar;
 
     private void Start()
     {
         startHealth = 0f;
+        maxHealth = 100f;
         currentHealth = startHealth;
     }
 
@@ -19,7 +24,7 @@ public class Enemy : MonoBehaviour
         if (currentHealth >= 100)
         {
             //Next Phase
-            Die();
+            NextPhase();
         }
     }
 
@@ -36,10 +41,11 @@ public class Enemy : MonoBehaviour
     public void GetRepaired(float damage)
     {
         currentHealth += damage;
+        HealthBar.fillAmount = currentHealth / maxHealth;
     }
 
-    void Die()
+    void NextPhase()
     {
-        Destroy(gameObject);
+        Gamemanager.instance.EndGame();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class EnemyShooting : MonoBehaviour
 {
@@ -24,25 +25,29 @@ public class EnemyShooting : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerPosition != null)
+
+        if (Gamemanager.instance.gameState == GameState.BOSSFIGHTPHASE1)
         {
-            shootingdir = playerPosition.position - transform.position;
-            if (shootingdir.sqrMagnitude != 0)
+            if (playerPosition != null)
             {
-                rotationPoint.transform.right = shootingdir.normalized;
-                if (shootingCountdown <= 0)
+                shootingdir = playerPosition.position - transform.position;
+                if (shootingdir.sqrMagnitude != 0)
                 {
-                    Shoot();
-                    shootingCountdown = 1f / shootingRate;
+                    rotationPoint.transform.right = shootingdir.normalized;
+                    if (shootingCountdown <= 0)
+                    {
+                        Shoot();
+                        shootingCountdown = 1f / shootingRate;
+                    }
+                    if (shootingCountdownOffset <= 0)
+                    {
+                        ShootVariation();
+                        shootingCountdownOffset = 1f / shootingRate;
+                    }
                 }
-                if (shootingCountdownOffset <= 0)
-                {
-                    ShootVariation();
-                    shootingCountdownOffset = 1f / shootingRate;
-                }
+                shootingCountdown -= Time.fixedDeltaTime;
+                shootingCountdownOffset -= Time.fixedDeltaTime;
             }
-            shootingCountdown -= Time.fixedDeltaTime;
-            shootingCountdownOffset -= Time.fixedDeltaTime;
         }
     }
 

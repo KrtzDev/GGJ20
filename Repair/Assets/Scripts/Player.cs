@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        maxHealth = 100f;
+        maxHealth = 1000f;
         currentHealth = maxHealth;    
     }
 

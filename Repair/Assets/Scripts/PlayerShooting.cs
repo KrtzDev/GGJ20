@@ -68,24 +68,31 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+        if (Gamemanager.instance.gameState == GameState.BOSSFIGHTPHASE1)
+        {
+            Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+        }
     }
 
     private void Bomb()
     {
-        if (enemyShooting != null)
+        if (Gamemanager.instance.gameState == GameState.BOSSFIGHTPHASE1)
         {
-            enemyShooting.enabled = false;
+            if (enemyShooting != null)
+            {
+                enemyShooting.enabled = false;
+            }
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bombRadius, layerMask);
+            GameObject BombEffectIns = Instantiate(bombEffect, transform.position, transform.rotation);
+            bombLight = BombEffectIns.GetComponentInChildren<Light2D>();
+            StartCoroutine(DimLight());
+            Destroy(BombEffectIns, 2f);
+            foreach (var collider in hitColliders)
+            {
+                Destroy(collider.gameObject);
+            }
         }
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position,bombRadius,layerMask);
-        GameObject BombEffectIns = Instantiate(bombEffect,transform.position,transform.rotation);
-        bombLight = BombEffectIns.GetComponentInChildren<Light2D>();
-        StartCoroutine(DimLight());
-        Destroy(BombEffectIns, 2f);
-        foreach (var collider in hitColliders)
-        {
-            Destroy(collider.gameObject);
-        }
+       
     }
 
     IEnumerator DimLight()
