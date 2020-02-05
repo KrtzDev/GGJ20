@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
 {
 
     [SerializeField] private GameObject player;
+    [SerializeField] private Animator PlayerAnim;
 
     // Update is called once per frame
     void Update()
@@ -13,6 +14,10 @@ public class FollowPlayer : MonoBehaviour
         if (player != null)
         {
             transform.position = player.transform.position;
+        }
+        if (PlayerAnim.GetBool("Die"))
+        {
+            this.enabled = false;
         }
     }
 }

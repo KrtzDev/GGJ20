@@ -584,7 +584,7 @@ MonoBehaviour:
   playerPosition: {fileID: 0}
   shootingCountdown: 0
   shootingCountdownOffset: 0
-  shootingRate: 1
+  shootingRate: 1.5
 --- !u!114 &9009314374405822216
 MonoBehaviour:
   m_ObjectHideFlags: 0

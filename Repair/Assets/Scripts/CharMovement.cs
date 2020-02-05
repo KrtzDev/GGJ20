@@ -19,10 +19,13 @@ public class CharMovement : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 5f;
 
+    [SerializeField] private Animator PlayerAnim;
+
     private void Start()
     {
         charRb = GetComponent<Rigidbody2D>();
         charColl = GetComponent<BoxCollider2D>();
+        PlayerAnim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -50,11 +53,15 @@ public class CharMovement : MonoBehaviour
 
     private void Move()
     {
-        charRb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
-        if (movementdir.sqrMagnitude != 0)
+        if (!PlayerAnim.GetBool("Die"))
         {
-            transform.right = movementdir.normalized;
+            charRb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
+            if (movementdir.sqrMagnitude != 0)
+            {
+                transform.right = movementdir.normalized;
+            }
         }
+       
     }
 
     private bool CanDash()

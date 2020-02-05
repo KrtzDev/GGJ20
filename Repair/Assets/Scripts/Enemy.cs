@@ -15,15 +15,16 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         startHealth = 0f;
-        maxHealth = 100f;
+        maxHealth = 300f;
         currentHealth = startHealth;
     }
 
     private void Update()
     {
-        if (currentHealth >= 100)
+        if (currentHealth >= maxHealth)
         {
-            //Next Phase
+            currentHealth = 0;
+
             NextPhase();
         }
     }

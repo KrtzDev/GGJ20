@@ -171,7 +171,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  DeathEffect: {fileID: 8335348979024534412, guid: 8016bf52b561fb444b5f20f6c53c6589,
+    type: 3}
   HealthBar: {fileID: 0}
+  maxHealthText: {fileID: 0}
+  textAnim: {fileID: 0}
+  playerAnim: {fileID: 868652016}
 --- !u!114 &3680435318010202014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +194,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   movementSpeed: 5
+  PlayerAnim: {fileID: 0}
 --- !u!114 &3680435318010201984
 MonoBehaviour:
   m_ObjectHideFlags: 0
