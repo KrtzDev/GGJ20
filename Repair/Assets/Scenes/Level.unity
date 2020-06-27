@@ -24,9 +24,9 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 35
   m_MaximumFOV: 91
-  m_MinimumOrthoSize: 1
+  m_MinimumOrthoSize: 5
   m_MaximumOrthoSize: 5000
 --- !u!114 &185718393
 MonoBehaviour:
@@ -540,6 +540,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -666,7 +667,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 40.69, y: 5}
+    oldSize: {x: 40.690002, y: 5.0067773}
     newSize: {x: 40.69, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -794,10 +795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -979,6 +980,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1274,7 +1276,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 40.69, y: 5}
+    oldSize: {x: 40.690002, y: 5.0067773}
     newSize: {x: 40.69, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1503,7 +1505,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484248512}
-  m_LocalRotation: {x: 0.00000003071953, y: 1.4361723e-17, z: -4.675111e-10, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -4.675111e-10, w: 1}
   m_LocalPosition: {x: -0.86433333, y: 0, z: -11.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1799,8 +1801,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 35
-  orthographic: 0
+  field of view: 60
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1824,7 +1826,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806460774}
-  m_LocalRotation: {x: 0.00000003071953, y: 1.4361723e-17, z: -4.675111e-10, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -4.675111e-10, w: 1}
   m_LocalPosition: {x: -0.86433333, y: 0, z: -11.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1847,9 +1849,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1859,6 +1860,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -1949,6 +1951,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2116,6 +2119,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.06844188, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2252,7 +2256,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 21.6}
+    oldSize: {x: 5, y: 21.603374}
     newSize: {x: 5, y: 21.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2469,7 +2473,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 21.6}
+    oldSize: {x: 5, y: 21.603374}
     newSize: {x: 5, y: 21.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2551,6 +2555,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.28709888, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2671,6 +2676,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1313650002}
     m_Modifications:
+    - target: {fileID: 1197181865, guid: c50f96ad626f1a34189532999057c162, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3680435318010201987, guid: c50f96ad626f1a34189532999057c162,
         type: 3}
       propertyPath: HealthBar
@@ -2977,6 +2986,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3020,6 +3030,21 @@ PrefabInstance:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1883900626}
+    - target: {fileID: 4836900478337876850, guid: f4f21418e2f21fe44a1b5dc62ffad5fb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.02519524
+      objectReference: {fileID: 0}
+    - target: {fileID: 4836900478337876850, guid: f4f21418e2f21fe44a1b5dc62ffad5fb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99968255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659845001324409831, guid: f4f21418e2f21fe44a1b5dc62ffad5fb,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9009314374405822216, guid: f4f21418e2f21fe44a1b5dc62ffad5fb,
         type: 3}
       propertyPath: playerPosition

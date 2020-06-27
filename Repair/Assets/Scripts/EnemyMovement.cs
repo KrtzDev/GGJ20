@@ -12,8 +12,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]private int movedirection;
     private float timer;
     [SerializeField] private float timeBetweenChange = .5f;
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
         if (playerPosition != null)
         {
@@ -32,15 +32,15 @@ public class EnemyMovement : MonoBehaviour
             float dist = Vector3.Distance(playerPosition.position, transform.position);
             if (dist > 5)
             {
-                EnemyRb.MovePosition(transform.position + transform.right * speed * Time.deltaTime);
+                EnemyRb.MovePosition(transform.position + transform.right * speed * Time.fixedDeltaTime);
             }
             else if (dist < 4)
             {
-                EnemyRb.MovePosition(transform.position + -transform.right * speed * Time.deltaTime);
+                EnemyRb.MovePosition(transform.position + -transform.right * speed * Time.fixedDeltaTime);
             }
             else
             {
-                EnemyRb.MovePosition(transform.position + transform.up * movedirection * speed * Time.deltaTime);
+                EnemyRb.MovePosition(transform.position + transform.up * movedirection * speed * Time.fixedDeltaTime);
             }
         }
         

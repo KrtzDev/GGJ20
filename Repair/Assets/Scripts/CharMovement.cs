@@ -66,7 +66,7 @@ public class CharMovement : MonoBehaviour
 
     private bool CanDash()
     {
-        return Physics2D.Raycast(transform.position, movementdir.normalized, dashForce, layerMask).collider == null; ;
+        return Physics2D.Raycast(transform.position, movementdir.normalized, dashForce, layerMask).collider == null;
     }
 
     private void OnDrawGizmos()
